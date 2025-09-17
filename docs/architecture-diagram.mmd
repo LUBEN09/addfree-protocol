@@ -1,0 +1,11 @@
+%% Diagrama de arquitectura ADFREE Protocol
+graph LR
+  Browser["Navegador + webext-ref"] -->|Solicitudes| Proxy["proxy-ref (Python)"]
+  Browser -->|Solicitudes| Server["server-module (Nginx/OpenResty)"]
+  Proxy -->|Reglas/Decisiones| Portal["portal (Dashboard)"]
+  Server -->|Reglas/Decisiones| Portal
+  TestHarness["test-harness (Playwright)"] --> Browser
+  subgraph Infra
+    Proxy
+    Server
+  end

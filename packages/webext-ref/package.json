@@ -1,0 +1,9 @@
+{
+  "name": "webext-ref",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "echo \"build placeholder\"",
+    "test": "echo \"no tests\" && exit 0"
+  }
+}
