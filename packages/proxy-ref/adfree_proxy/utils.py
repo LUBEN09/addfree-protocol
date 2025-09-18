@@ -1,13 +1,12 @@
-"""Funciones auxiliares comunes"""
-import json
+# adfree_proxy/utils.py
 
+import base64
 
-def load_yaml(path: str):
-    import yaml
-    with open(path, 'r', encoding='utf-8') as f:
-        return yaml.safe_load(f)
+def normalize_header_name(name: str) -> str:
+    """Convierte 'Adfree-Policy' -> 'adfree-policy'"""
+    return name.lower().replace('_', '-')
 
-
-def read_rules(path: str):
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+def safe_b64decode(b64_str: str) -> bytes:
+    """Decodifica base64url con padding seguro."""
+    padding = '=' * (4 - len(b64_str) % 4)
+    return base64.urlsafe_b64decode(b64_str + padding)
